@@ -10,7 +10,7 @@ const SAFE_COLS = `id, faculty_number, first_name, last_name, middle_name,
 export async function GET(req: NextRequest) {
   const session = await getServerSession(authOptions);
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  const { searchParams } = new URL(req.url);
+  const searchParams = req.nextUrl.searchParams;
   const search = searchParams.get('search');
   const status = searchParams.get('status');
   let sql = `SELECT ${SAFE_COLS} FROM faculty WHERE 1=1`;

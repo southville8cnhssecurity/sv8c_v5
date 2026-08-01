@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
   if (userType !== 'admin')
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
 
-  const { searchParams } = new URL(req.url);
+  const searchParams = req.nextUrl.searchParams;
   const search  = searchParams.get('search');
   const status  = searchParams.get('status');
   const grade   = searchParams.get('grade');
