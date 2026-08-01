@@ -1,0 +1,108 @@
+[35mapp/(auth)/login/page.tsx[m[36m:[m      const res = await [1;31mfetch([m`/api/${apiType}/create-account`, {
+[35mapp/(auth)/register/staff/page.tsx[m[36m:[m      const res = await [1;31mfetch([m'/api/staff/register', { method:'POST', body:fd });
+[35mapp/(dashboard)/activity-log/page.tsx[m[36m:[m      const r = await [1;31mfetch([m'/api/audit-logs');
+[35mapp/(dashboard)/activity-log/page.tsx[m[36m:[m      const res = await [1;31mfetch([m'/SV8CLOGOBG.png');
+[35mapp/(dashboard)/create-id/page.tsx[m[36m:[m        [1;31mfetch([m'/api/staff?status=approved').then(r => r.json()),
+[35mapp/(dashboard)/create-id/page.tsx[m[36m:[m        [1;31mfetch([m'/api/students?status=approved').then(r => r.json()),
+[35mapp/(dashboard)/create-id/page.tsx[m[36m:[m    [1;31mfetch([m'/api/sections').then(r => r.json()).then(d => {
+[35mapp/(dashboard)/create-id/page.tsx[m[36m:[m    const r = await [1;31mfetch([m`/api/${apiPath}?status=approved`);
+[35mapp/(dashboard)/create-id/page.tsx[m[36m:[m      const gr  = await [1;31mfetch([m`/api/ids?ids=${ids}&type=${tab}`);
+[35mapp/(dashboard)/create-id/page.tsx[m[36m:[m          const res = await [1;31mfetch([m'/api/ids', {
+[35mapp/(dashboard)/home/page.tsx[m[36m:[m      [1;31mfetch([m'/api/home/stats').then(r=>r.json()),
+[35mapp/(dashboard)/home/page.tsx[m[36m:[m      [1;31mfetch([m'/api/home/section-stats').then(r=>r.json()),
+[35mapp/(dashboard)/reports/page.tsx[m[36m:[m        [1;31mfetch([m`/api/audit-logs?from=${dateFrom}&to=${dateTo}&admin=${adminFilter}`),
+[35mapp/(dashboard)/reports/page.tsx[m[36m:[m        [1;31mfetch([m'/api/home/stats'),
+[35mapp/(dashboard)/settings/page.tsx[m[36m:[m    const r = await [1;31mfetch([m'/api/sections');
+[35mapp/(dashboard)/settings/page.tsx[m[36m:[m      const r = await [1;31mfetch([m'/api/sections',{
+[35mapp/(dashboard)/settings/page.tsx[m[36m:[m      const r = await [1;31mfetch([m`/api/sections/${editingSection.id}`,{
+[35mapp/(dashboard)/settings/page.tsx[m[36m:[m    const r = await [1;31mfetch([m`/api/sections/${id}`,{ method:'DELETE' });
+[35mapp/(dashboard)/staff-submit/page.tsx[m[36m:[m    const r = await [1;31mfetch([m'/api/staff');
+[35mapp/(dashboard)/staff-submit/page.tsx[m[36m:[m      await [1;31mfetch([m`/api/staff/${id}`, {
+[35mapp/(dashboard)/staff-submit/page.tsx[m[36m:[m    await [1;31mfetch([m`/api/staff/${id}`, { method: 'DELETE' });
+[35mapp/(dashboard)/student-submit/page.tsx[m[36m:[m    const r = await [1;31mfetch([m'/api/students/admin-fields', {
+[35mapp/(dashboard)/student-submit/page.tsx[m[36m:[m    const r = await [1;31mfetch([m'/api/students');
+[35mapp/(dashboard)/student-submit/page.tsx[m[36m:[m    [1;31mfetch([m'/api/sections').then(r=>r.json()).then(d=>{
+[35mapp/(dashboard)/student-submit/page.tsx[m[36m:[m    await [1;31mfetch([m`/api/students/${id}`,{ method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({status}) });
+[35mapp/(dashboard)/student-submit/page.tsx[m[36m:[m    const r = await [1;31mfetch([m'/api/students/admin-fields', {
+[35mapp/(dashboard)/student-submit/page.tsx[m[36m:[m      const r = await [1;31mfetch([m`/api/students/${rejectTarget.id}`, {
+[35mapp/(dashboard)/student-submit/page.tsx[m[36m:[m    await [1;31mfetch([m`/api/students/${id}`,{ method:'DELETE' });
+[35mapp/(portal)/my-status/page.tsx[m[36m:[m    [1;31mfetch([m'/api/me').then(r=>r.json()).then(d=>{ setProfile(d); setForm(d||{}); });
+[35mapp/(portal)/my-status/page.tsx[m[36m:[m    [1;31mfetch([m'/api/notifications').then(r=>r.json()).then(d=>setNotifs(Array.isArray(d)?d:[]));
+[35mapp/(portal)/my-status/page.tsx[m[36m:[m      await [1;31mfetch([m'/api/me/photo', { method:'POST', body:fd });
+[35mapp/(portal)/my-status/page.tsx[m[36m:[m    await [1;31mfetch([m'/api/me', {
+[35mapp/(portal)/my-status/page.tsx[m[36m:[m    const updated = await [1;31mfetch([m'/api/me').then(r=>r.json());
+[35mapp/(portal)/my-status/page.tsx[m[36m:[m    await [1;31mfetch([m'/api/me', {
+[35mapp/(portal)/my-status/page.tsx[m[36m:[m    const updated = await [1;31mfetch([m'/api/me').then(r=>r.json());
+[35mapp/(portal)/my-status/page.tsx[m[36m:[m    await [1;31mfetch([m'/api/notifications',{ method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({markAll:true}) });
+[35mapp/(portal)/my-status/page.tsx[m[36m:[m    await [1;31mfetch([m'/api/notifications',{ method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({id}) });
+[35mapp/(portal)/student-status/page.tsx[m[36m:[m    [1;31mfetch([m'/api/me', { signal: controller.signal }).then(r => r.json()).then(d => { setProfile(d); setForm(d || {}); }).catch(() => {});
+[35mapp/(portal)/student-status/page.tsx[m[36m:[m    [1;31mfetch([m'/api/sections', { signal: controller.signal }).then(r => r.json()).then(d => {
+[35mapp/(portal)/student-status/page.tsx[m[36m:[m    [1;31mfetch([m'/api/notifications', { signal: controller.signal }).then(r => r.json()).then(d => setNotifs(Array.isArray(d) ? d : [])).catch(() => {});
+[35mapp/(portal)/student-status/page.tsx[m[36m:[m      const photoRes = await [1;31mfetch([m'/api/me/photo', { method: 'POST', body: fd });
+[35mapp/(portal)/student-status/page.tsx[m[36m:[m    const res = await [1;31mfetch([m'/api/me', {
+[35mapp/(portal)/student-status/page.tsx[m[36m:[m    const updated = await [1;31mfetch([m'/api/me').then(r => r.json());
+[35mapp/(portal)/student-status/page.tsx[m[36m:[m    await [1;31mfetch([m'/api/notifications', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ markAll: true }) });
+[35mapp/(portal)/student-status/page.tsx[m[36m:[m    await [1;31mfetch([m'/api/notifications', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) });
+[35mcomponents/ids/PrincipalSettings.tsx[m[36m:[m    [1;31mfetch([m"/api/settings")
+[35mcomponents/ids/PrincipalSettings.tsx[m[36m:[m      const res = await [1;31mfetch([m"/api/settings", {
+[35mcomponents/ids/StudentIDForm.tsx[m[36m:[m    [1;31mfetch([m"/api/sections")
+[35mcomponents/layout/BottomNav.tsx[m[36m:[m        const res = await [1;31mfetch([m'/api/dashboard/counts');
+[35mcomponents/layout/Header.tsx[m[36m:[m    try { await [1;31mfetch([m'/api/auth/logout', { method:'POST' }); } catch {}
+[35mcomponents/layout/Sidebar.tsx[m[36m:[m            try { await [1;31mfetch([m'/api/auth/logout',{method:'POST'}); } catch{}
+[35mcomponents/ui/PhotoUploadBGRemoval.tsx[m[36m:[m      const res = await [1;31mfetch([mcomposited);
+[35mcomponents/ui/PhotoUploadBGRemoval.tsx[m[36m:[m      const res = await [1;31mfetch([mrawUrl);
+[35mlib/theme.tsx[m[36m:[m    [1;31mfetch([m'/api/settings')
+[35mapp/(auth)/login/page.tsx[m[36m:[m      const res = await [1;31mfetch([m`/api/${apiType}/create-account`, {
+[35mapp/(auth)/register/staff/page.tsx[m[36m:[m      const res = await [1;31mfetch([m'/api/staff/register', { method:'POST', body:fd });
+[35mapp/(dashboard)/activity-log/page.tsx[m[36m:[m      const r = await [1;31mfetch([m'/api/audit-logs');
+[35mapp/(dashboard)/activity-log/page.tsx[m[36m:[m      const res = await [1;31mfetch([m'/SV8CLOGOBG.png');
+[35mapp/(dashboard)/create-id/page.tsx[m[36m:[m        [1;31mfetch([m'/api/staff?status=approved').then(r => r.json()),
+[35mapp/(dashboard)/create-id/page.tsx[m[36m:[m        [1;31mfetch([m'/api/students?status=approved').then(r => r.json()),
+[35mapp/(dashboard)/create-id/page.tsx[m[36m:[m    [1;31mfetch([m'/api/sections').then(r => r.json()).then(d => {
+[35mapp/(dashboard)/create-id/page.tsx[m[36m:[m    const r = await [1;31mfetch([m`/api/${apiPath}?status=approved`);
+[35mapp/(dashboard)/create-id/page.tsx[m[36m:[m      const gr  = await [1;31mfetch([m`/api/ids?ids=${ids}&type=${tab}`);
+[35mapp/(dashboard)/create-id/page.tsx[m[36m:[m          const res = await [1;31mfetch([m'/api/ids', {
+[35mapp/(dashboard)/home/page.tsx[m[36m:[m      [1;31mfetch([m'/api/home/stats').then(r=>r.json()),
+[35mapp/(dashboard)/home/page.tsx[m[36m:[m      [1;31mfetch([m'/api/home/section-stats').then(r=>r.json()),
+[35mapp/(dashboard)/reports/page.tsx[m[36m:[m        [1;31mfetch([m`/api/audit-logs?from=${dateFrom}&to=${dateTo}&admin=${adminFilter}`),
+[35mapp/(dashboard)/reports/page.tsx[m[36m:[m        [1;31mfetch([m'/api/home/stats'),
+[35mapp/(dashboard)/settings/page.tsx[m[36m:[m    const r = await [1;31mfetch([m'/api/sections');
+[35mapp/(dashboard)/settings/page.tsx[m[36m:[m      const r = await [1;31mfetch([m'/api/sections',{
+[35mapp/(dashboard)/settings/page.tsx[m[36m:[m      const r = await [1;31mfetch([m`/api/sections/${editingSection.id}`,{
+[35mapp/(dashboard)/settings/page.tsx[m[36m:[m    const r = await [1;31mfetch([m`/api/sections/${id}`,{ method:'DELETE' });
+[35mapp/(dashboard)/staff-submit/page.tsx[m[36m:[m    const r = await [1;31mfetch([m'/api/staff');
+[35mapp/(dashboard)/staff-submit/page.tsx[m[36m:[m      await [1;31mfetch([m`/api/staff/${id}`, {
+[35mapp/(dashboard)/staff-submit/page.tsx[m[36m:[m    await [1;31mfetch([m`/api/staff/${id}`, { method: 'DELETE' });
+[35mapp/(dashboard)/student-submit/page.tsx[m[36m:[m    const r = await [1;31mfetch([m'/api/students/admin-fields', {
+[35mapp/(dashboard)/student-submit/page.tsx[m[36m:[m    const r = await [1;31mfetch([m'/api/students');
+[35mapp/(dashboard)/student-submit/page.tsx[m[36m:[m    [1;31mfetch([m'/api/sections').then(r=>r.json()).then(d=>{
+[35mapp/(dashboard)/student-submit/page.tsx[m[36m:[m    await [1;31mfetch([m`/api/students/${id}`,{ method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({status}) });
+[35mapp/(dashboard)/student-submit/page.tsx[m[36m:[m    const r = await [1;31mfetch([m'/api/students/admin-fields', {
+[35mapp/(dashboard)/student-submit/page.tsx[m[36m:[m      const r = await [1;31mfetch([m`/api/students/${rejectTarget.id}`, {
+[35mapp/(dashboard)/student-submit/page.tsx[m[36m:[m    await [1;31mfetch([m`/api/students/${id}`,{ method:'DELETE' });
+[35mapp/(portal)/my-status/page.tsx[m[36m:[m    [1;31mfetch([m'/api/me').then(r=>r.json()).then(d=>{ setProfile(d); setForm(d||{}); });
+[35mapp/(portal)/my-status/page.tsx[m[36m:[m    [1;31mfetch([m'/api/notifications').then(r=>r.json()).then(d=>setNotifs(Array.isArray(d)?d:[]));
+[35mapp/(portal)/my-status/page.tsx[m[36m:[m      await [1;31mfetch([m'/api/me/photo', { method:'POST', body:fd });
+[35mapp/(portal)/my-status/page.tsx[m[36m:[m    await [1;31mfetch([m'/api/me', {
+[35mapp/(portal)/my-status/page.tsx[m[36m:[m    const updated = await [1;31mfetch([m'/api/me').then(r=>r.json());
+[35mapp/(portal)/my-status/page.tsx[m[36m:[m    await [1;31mfetch([m'/api/me', {
+[35mapp/(portal)/my-status/page.tsx[m[36m:[m    const updated = await [1;31mfetch([m'/api/me').then(r=>r.json());
+[35mapp/(portal)/my-status/page.tsx[m[36m:[m    await [1;31mfetch([m'/api/notifications',{ method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({markAll:true}) });
+[35mapp/(portal)/my-status/page.tsx[m[36m:[m    await [1;31mfetch([m'/api/notifications',{ method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({id}) });
+[35mapp/(portal)/student-status/page.tsx[m[36m:[m    [1;31mfetch([m'/api/me', { signal: controller.signal }).then(r => r.json()).then(d => { setProfile(d); setForm(d || {}); }).catch(() => {});
+[35mapp/(portal)/student-status/page.tsx[m[36m:[m    [1;31mfetch([m'/api/sections', { signal: controller.signal }).then(r => r.json()).then(d => {
+[35mapp/(portal)/student-status/page.tsx[m[36m:[m    [1;31mfetch([m'/api/notifications', { signal: controller.signal }).then(r => r.json()).then(d => setNotifs(Array.isArray(d) ? d : [])).catch(() => {});
+[35mapp/(portal)/student-status/page.tsx[m[36m:[m      const photoRes = await [1;31mfetch([m'/api/me/photo', { method: 'POST', body: fd });
+[35mapp/(portal)/student-status/page.tsx[m[36m:[m    const res = await [1;31mfetch([m'/api/me', {
+[35mapp/(portal)/student-status/page.tsx[m[36m:[m    const updated = await [1;31mfetch([m'/api/me').then(r => r.json());
+[35mapp/(portal)/student-status/page.tsx[m[36m:[m    await [1;31mfetch([m'/api/notifications', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ markAll: true }) });
+[35mapp/(portal)/student-status/page.tsx[m[36m:[m    await [1;31mfetch([m'/api/notifications', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) });
+[35mcomponents/ids/PrincipalSettings.tsx[m[36m:[m    [1;31mfetch([m"/api/settings")
+[35mcomponents/ids/PrincipalSettings.tsx[m[36m:[m      const res = await [1;31mfetch([m"/api/settings", {
+[35mcomponents/ids/StudentIDForm.tsx[m[36m:[m    [1;31mfetch([m"/api/sections")
+[35mcomponents/layout/BottomNav.tsx[m[36m:[m        const res = await [1;31mfetch([m'/api/dashboard/counts');
+[35mcomponents/layout/Header.tsx[m[36m:[m    try { await [1;31mfetch([m'/api/auth/logout', { method:'POST' }); } catch {}
+[35mcomponents/layout/Sidebar.tsx[m[36m:[m            try { await [1;31mfetch([m'/api/auth/logout',{method:'POST'}); } catch{}
+[35mcomponents/ui/PhotoUploadBGRemoval.tsx[m[36m:[m      const res = await [1;31mfetch([mcomposited);
+[35mcomponents/ui/PhotoUploadBGRemoval.tsx[m[36m:[m      const res = await [1;31mfetch([mrawUrl);
+[35mlib/theme.tsx[m[36m:[m    [1;31mfetch([m'/api/settings')

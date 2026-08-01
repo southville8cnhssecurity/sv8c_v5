@@ -2,8 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { query } from '@/lib/db';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
+import { put } from '@vercel/blob';
 
 const ALLOWED_TYPES: Record<string, string> = {
   'image/jpeg': 'jpg',
@@ -28,8 +27,6 @@ export async function POST(req: NextRequest) {
     const fd = await req.formData();
     const photoFile = fd.get('photo') as File | null;
     const sigFile   = fd.get('signature') as File | null;
-    const uploadsDir = path.join(process.cwd(), 'public', 'uploads');
-    await mkdir(uploadsDir, { recursive: true });
     const table  = tableMap[userType];
     const prefix = prefMap[userType];
 
@@ -41,9 +38,11 @@ export async function POST(req: NextRequest) {
       if (!ext)
         throw new Error(`Invalid file type "${file.type}". Only JPEG, PNG, and WebP are allowed.`);
       const safeName = `${prefix}_${kind}_${Date.now()}.${ext}`;
-      const bytes = await file.arrayBuffer();
-      await writeFile(path.join(uploadsDir, safeName), Buffer.from(bytes));
-      return `/uploads/${safeName}`;
+      const blob = await put(safeName, file, {
+        access: 'public',
+        addRandomSuffix: false,
+      });
+      return blob.url;
     }
 
     if (photoFile && photoFile.size > 0) {

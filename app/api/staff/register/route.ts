@@ -4,8 +4,7 @@ import { generateUID } from '@/lib/uid';
 import { formatQRValue } from '@/lib/qr';
 import bcrypt from 'bcryptjs';
 import { randomBytes } from 'crypto';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
+import { put } from '@vercel/blob';
 
 function academicYear(): number {
   const now = new Date();
@@ -37,9 +36,6 @@ export async function POST(req: NextRequest) {
     const existing = await query<any[]>('SELECT id FROM staff WHERE email = ?', [email]);
     if (existing.length) return NextResponse.json({ error: 'This Gmail is already registered' }, { status: 400 });
 
-    const uploadsDir = path.join(process.cwd(), 'public', 'uploads');
-    await mkdir(uploadsDir, { recursive: true });
-
     const ALLOWED_MIME: Record<string,string> = { 'image/jpeg':'jpg','image/jpg':'jpg','image/png':'png','image/webp':'webp' };
     const MAX_SIZE = 5 * 1024 * 1024;
 
@@ -48,8 +44,11 @@ export async function POST(req: NextRequest) {
       const ext = ALLOWED_MIME[file.type];
       if (!ext) throw new Error(`Invalid file type "${file.type}". Only JPEG, PNG, and WebP allowed.`);
       const fname = `${prefix}_${Date.now()}.${ext}`;
-      await writeFile(path.join(uploadsDir, fname), Buffer.from(await file.arrayBuffer()));
-      return `/uploads/${fname}`;
+      const blob = await put(fname, file, {
+        access: 'public',
+        addRandomSuffix: false,
+      });
+      return blob.url;
     }
 
     let photo_path = '', signature_path = '';
