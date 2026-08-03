@@ -17,12 +17,9 @@ export default function Header({ title, subtitle, actions }: Props) {
   const isLight = theme === 'light';
   const onSettings = pathname === '/settings';
 
-  // ── Sign-out confirmation state ────────────────────────────────────
   const [showSignOutConfirm, setShowSignOutConfirm] = useState(false);
   const [signingOut, setSigningOut] = useState(false);
 
-  // ── Portal mount guard — createPortal needs document.body, which only
-  // exists client-side. Mounting after first render avoids SSR mismatch. ──
   const [mounted, setMounted] = useState(false);
   useEffect(() => { setMounted(true); }, []);
 
@@ -32,12 +29,6 @@ export default function Header({ title, subtitle, actions }: Props) {
     signOut({ callbackUrl:'/login' });
   }
 
-  // ── The modal itself, rendered via portal straight into <body> ──────
-  // Why: the header has `backdropFilter` + `position: sticky`, which
-  // creates a new containing block for any `position: fixed` descendant.
-  // That was trapping the modal near the header instead of centering it
-  // in the actual viewport. Rendering it into document.body sidesteps
-  // that entirely — it now always centers on the full screen.
   const signOutModal = (
     <AnimatePresence>
       {showSignOutConfirm && (
@@ -53,7 +44,6 @@ export default function Header({ title, subtitle, actions }: Props) {
               border:'1px solid var(--border)', overflow:'hidden', position:'relative',
               boxShadow:'0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.02)' }}>
 
-            {/* Close icon — top-right, subtle, alt to Cancel */}
             <button onClick={()=>{ if(!signingOut) setShowSignOutConfirm(false); }} disabled={signingOut}
               style={{ position:'absolute', top:14, right:14, width:28, height:28, borderRadius:8,
                 border:'1px solid var(--border2)', background:'var(--input-bg)',
@@ -62,7 +52,6 @@ export default function Header({ title, subtitle, actions }: Props) {
               <X size={13}/>
             </button>
 
-            {/* Top accent bar */}
             <div style={{ height:4, width:'100%',
               background:'linear-gradient(90deg,#ef4444,#f97316,#ef4444)', backgroundSize:'200% 100%' }} />
 
@@ -108,7 +97,7 @@ export default function Header({ title, subtitle, actions }: Props) {
                   color:'var(--text2)', transition:'all 0.15s' }}>
                 Cancel
               </button>
-              <motion.button whileHover={!signingOut ? { scale:1.015 } : {}} whileTap={!signingOut ? { scale:0.98 } : {}}
+              <motion.button whileTap={!signingOut ? { scale:0.98 } : {}}
                 onClick={performSignOut} disabled={signingOut}
                 style={{ flex:1.3, padding:'12px', borderRadius:12, fontSize:13, fontWeight:700,
                   border:'none', cursor:signingOut?'not-allowed':'pointer',
@@ -142,7 +131,6 @@ export default function Header({ title, subtitle, actions }: Props) {
       fontFamily:'Inter, Plus Jakarta Sans, system-ui, sans-serif',
       transition: 'background 0.35s, border-color 0.35s',
     }}>
-      {/* Left — title */}
       <div>
         <h1 style={{ fontSize:16, fontWeight:800, color:'var(--text)', letterSpacing:'-0.02em', lineHeight:1.2 }}>
           {title}
@@ -153,11 +141,9 @@ export default function Header({ title, subtitle, actions }: Props) {
         }
       </div>
 
-      {/* Right — actions + settings + theme + avatar */}
       <div style={{ display:'flex', alignItems:'center', gap:8 }}>
         {actions}
 
-        {/* Logout button — opens confirmation modal instead of signing out immediately */}
         <motion.button whileTap={{ scale:0.92 }}
           onClick={() => setShowSignOutConfirm(true)}
           title="Sign Out"
@@ -167,8 +153,7 @@ export default function Header({ title, subtitle, actions }: Props) {
           <LogOut size={14}/> <span className="hidden sm:inline">Sign Out</span>
         </motion.button>
 
-        {/* Settings button — top right, always visible */}
-        <motion.div whileHover={{ scale:1.05 }} whileTap={{ scale:0.92 }}>
+        <motion.div whileTap={{ scale:0.92 }}>
           <Link href="/settings"
             style={{ width:34, height:34, borderRadius:9, cursor:'pointer',
               background: onSettings ? 'rgba(100,116,139,0.15)' : 'var(--input-bg)',
@@ -182,7 +167,6 @@ export default function Header({ title, subtitle, actions }: Props) {
           </Link>
         </motion.div>
 
-        {/* Theme toggle */}
         <motion.button whileTap={{ scale:0.92 }} onClick={toggleTheme}
           title={isLight ? 'Switch to Dark' : 'Switch to Light'}
           style={{ width:34, height:34, borderRadius:9, cursor:'pointer',
@@ -192,7 +176,6 @@ export default function Header({ title, subtitle, actions }: Props) {
           {isLight ? <Moon size={14}/> : <Sun size={14}/>}
         </motion.button>
 
-        {/* Admin avatar */}
         <div style={{ display:'flex', alignItems:'center', gap:8 }}>
           <div style={{ width:32, height:32, borderRadius:'50%', flexShrink:0,
             background:'linear-gradient(135deg,var(--accent),var(--accent2,#ea580c))',
@@ -212,7 +195,6 @@ export default function Header({ title, subtitle, actions }: Props) {
         </div>
       </div>
 
-      {/* Modal rendered outside the header's DOM/stacking context */}
       {mounted && createPortal(signOutModal, document.body)}
     </header>
   );

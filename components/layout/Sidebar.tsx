@@ -58,7 +58,7 @@ export default function Sidebar() {
           const active = pathname === item.href;
           return (
             <Link key={item.href} href={item.href} style={{ textDecoration:'none', display:'block', marginBottom:3 }}>
-              <motion.div whileHover={{ x:4 }} whileTap={{ scale:0.97 }}
+              <motion.div whileTap={{ scale:0.97 }}
                 style={{ display:'flex', alignItems:'center', gap:10, padding:'10px 12px', borderRadius:11,
                   background: active ? `${item.color}18` : 'transparent',
                   border: active ? `1px solid ${item.color}35` : '1px solid transparent',
@@ -102,7 +102,7 @@ export default function Sidebar() {
             </div>
           </div>
         </div>
-        <motion.button whileHover={{ scale:1.01 }} whileTap={{ scale:0.97 }}
+        <motion.button whileTap={{ scale:0.97 }}
           onClick={async()=>{
             try { await fetch('/api/auth/logout',{method:'POST'}); } catch{}
             signOut({ callbackUrl:'/login' });

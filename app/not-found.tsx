@@ -22,7 +22,7 @@ export default function NotFound() {
           The page you're looking for doesn't exist or you may not have access to it.
         </p>
         <Link href={href}>
-          <motion.button whileHover={{ scale:1.03, y:-2 }} whileTap={{ scale:0.97 }}
+          <motion.button whileTap={{ scale:0.97 }}
             style={{ padding:'13px 28px', borderRadius:13, background:'linear-gradient(135deg,var(--accent),#ea580c)',
               color:'#fff', border:'none', fontSize:15, fontWeight:700, cursor:'pointer',
               boxShadow:'0 6px 24px var(--glow-accent)' }}>

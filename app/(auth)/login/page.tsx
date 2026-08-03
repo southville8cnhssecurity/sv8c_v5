@@ -222,7 +222,7 @@ export default function LoginPage() {
                     if (k === '') return <div key={i} />;
                     return (
                       <motion.button key={i}
-                        whileHover={{ scale:1.05, y:-1 }} whileTap={{ scale:0.93 }}
+                        whileTap={{ scale:0.93 }}
                         onClick={() => k === 'del' ? pressDelete() : pressKey(k)}
                         style={{ height:56, borderRadius:14, fontSize:k==='del'?13:22, fontWeight:k==='del'?700:800,
                           background: k==='del' ? 'rgba(239,68,68,0.08)' : 'var(--input-bg)',
@@ -385,7 +385,7 @@ export default function LoginPage() {
                   )}
 
                   <motion.button type="submit" disabled={loading}
-                    whileHover={!loading?{scale:1.02,y:-1}:{}} whileTap={!loading?{scale:0.98}:{}}
+                    whileTap={!loading?{scale:0.98}:{}}
                     style={{ width:'100%', padding:'16px', marginTop:4,
                       background: loading ? 'var(--input-bg)' : sel.grad,
                       color: loading ? 'var(--text3)' : '#fff',

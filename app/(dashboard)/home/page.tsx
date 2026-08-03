@@ -112,7 +112,7 @@ export default function HomePage() {
 
             <div style={{ position:'relative', zIndex:1, display:'flex', alignItems:'center', gap:24, flexWrap:'wrap' }}>
               {/* Logo */}
-              <motion.div whileHover={{ scale:1.05, rotate:2 }} transition={{ type:'spring', stiffness:300 }}>
+              <div>
                 <div className="animated-border" style={{ padding:3, borderRadius:20, display:'inline-block' }}>
                   <div style={{ background:'var(--bg)', borderRadius:17, padding:12, display:'flex',
                     alignItems:'center', justifyContent:'center' }}>
@@ -121,7 +121,7 @@ export default function HomePage() {
                       style={{ width:72, height:72, objectFit:'contain', display:'block' }} />
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* School name + greeting */}
               <div style={{ flex:1, minWidth:220 }}>
@@ -170,7 +170,7 @@ export default function HomePage() {
           {statCards.map((card,i)=>(
             <motion.div key={card.label}
               initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }}
-              transition={{ delay:0.08+i*0.05 }} whileHover={{ scale:1.03, y:-3 }}
+              transition={{ delay:0.08+i*0.05 }}
               style={{ padding:18, borderRadius:16, position:'relative', overflow:'hidden',
                 background:'var(--card)', border:'1px solid var(--border)', backdropFilter:'blur(12px)',
                 cursor:'default' }}>
@@ -204,7 +204,7 @@ export default function HomePage() {
               </p>
             </div>
             <Link href="/create-id" style={{ textDecoration:'none' }}>
-              <motion.button whileHover={{ scale:1.03 }} whileTap={{ scale:0.97 }}
+              <motion.button whileTap={{ scale:0.97 }}
                 style={{ padding:'8px 16px', borderRadius:10, fontSize:12, fontWeight:700,
                   background:'rgba(79,110,247,0.1)', border:'1px solid rgba(79,110,247,0.25)',
                   color:'#4f6ef7', cursor:'pointer' }}>Generate IDs →</motion.button>
@@ -243,7 +243,7 @@ export default function HomePage() {
                       : secs.map(sec => {
                           const done = sec.total>0 && sec.with_ids>=sec.total;
                           return (
-                            <motion.div key={sec.id} whileHover={{ scale:1.06, y:-2 }}
+                            <div key={sec.id}
                               title={`Section ${sec.name}: ${sec.with_ids}/${sec.total} IDs`}
                               style={{ padding:'8px 14px', borderRadius:10, cursor:'default',
                                 transition:'all 0.25s',
@@ -259,7 +259,7 @@ export default function HomePage() {
                               </div>
                               <p style={{ fontSize:9, color:done?'rgba(34,197,94,0.7)':'var(--text3)',
                                 marginTop:2, textAlign:'center' }}>{sec.with_ids}/{sec.total}</p>
-                            </motion.div>
+                            </div>
                           );
                         })}
                   </div>

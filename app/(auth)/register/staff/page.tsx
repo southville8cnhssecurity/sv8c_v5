@@ -1,4 +1,5 @@
 'use client';
+export const dynamic = 'force-dynamic';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -224,7 +225,7 @@ export default function StaffRegisterPage() {
             </div>
 
             <motion.button type="submit" disabled={loading}
-              whileHover={!loading?{scale:1.01}:{}} whileTap={!loading?{scale:0.99}:{}}
+              whileTap={!loading?{scale:0.99}:{}}
               style={{ width:'100%', padding:'13px',
                 background:loading?'#CBD5E1':'linear-gradient(135deg, #16A34A, #15803D)',
                 color:'#fff', border:'none', borderRadius:10, fontSize:14, fontWeight:700,
@@ -332,7 +333,6 @@ export default function StaffRegisterPage() {
                   <X size={14}/> Go back
                 </button>
                 <motion.button
-                  whileHover={allChecked?{scale:1.02,y:-1}:{}}
                   whileTap={allChecked?{scale:0.97}:{}}
                   onClick={handleSubmit}
                   disabled={!allChecked}
