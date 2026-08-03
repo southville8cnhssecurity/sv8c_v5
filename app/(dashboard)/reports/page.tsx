@@ -246,7 +246,7 @@ export default function ReportsPage() {
           </div>
 
           <div style={{ marginLeft:'auto' }}>
-            <motion.button whileHover={{ scale:1.02, y:-1 }} whileTap={{ scale:0.97 }}
+            <motion.button whileTap={{ scale:0.97 }}
               onClick={generatePDF} disabled={generating}
               style={{ display:'flex', alignItems:'center', gap:8, padding:'10px 20px', borderRadius:10,
                 fontSize:13, fontWeight:700, cursor:generating?'not-allowed':'pointer', border:'none',

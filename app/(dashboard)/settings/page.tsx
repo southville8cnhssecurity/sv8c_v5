@@ -334,7 +334,7 @@ export default function SettingsPage() {
             ].map(opt => {
               const active = theme === opt.v;
               return (
-                <motion.button key={opt.v} whileHover={{ scale:1.02, y:-2 }} whileTap={{ scale:0.97 }}
+                <motion.button key={opt.v} whileTap={{ scale:0.97 }}
                   onClick={()=>setTheme(opt.v as 'dark'|'light')}
                   style={{ padding:'20px 14px', borderRadius:16, cursor:'pointer', textAlign:'center',
                     background: active ? 'rgba(249,115,22,0.1)' : 'var(--input-bg)',
@@ -366,7 +366,7 @@ export default function SettingsPage() {
               { id:'admin1', name:'Administrator 1', role:'Full Access' },
               { id:'admin2', name:'Administrator 2', role:'Full Access' },
             ].map(a => (
-              <motion.div key={a.id} whileHover={{ x:4 }}
+              <div key={a.id}
                 style={{ display:'flex', alignItems:'center', gap:12, padding:'14px 16px', borderRadius:13,
                   background:'var(--input-bg)', border:'1px solid var(--border)', transition:'all 0.2s' }}>
                 <div style={{ width:40, height:40, borderRadius:11, flexShrink:0,
@@ -385,7 +385,7 @@ export default function SettingsPage() {
                   border:'1px solid rgba(79,110,247,0.25)' }}>
                   {a.role}
                 </span>
-              </motion.div>
+              </div>
             ))}
           </div>
           <div style={{ marginTop:14, padding:'12px 14px', borderRadius:10,
@@ -573,7 +573,7 @@ export default function SettingsPage() {
       <div style={{ position:'sticky', bottom:0, zIndex:20, padding:'12px 24px 20px',
         background:'linear-gradient(to top, var(--bg) 75%, transparent)',
         borderTop:'1px solid var(--border)' }}>
-        <motion.button whileHover={{ scale:1.01, y:-1 }} whileTap={{ scale:0.98 }}
+        <motion.button whileTap={{ scale:0.98 }}
           onClick={handleSave}
           style={{ width:'100%', maxWidth:760, margin:'0 auto', display:'flex',
             padding:'15px', border:'none', borderRadius:14, fontSize:15, fontWeight:700,
